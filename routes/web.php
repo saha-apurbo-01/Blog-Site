@@ -22,3 +22,4 @@ require __DIR__.'/auth.php';
 Route::get('/profile/edit-profile', [UserController::class, 'edit_user'])->name('edit.user');
 Route::post('/update/profile', [UserController::class, 'update_user'])->name('update.user');
 Route::post('/update/password', [UserController::class, 'update_password'])->name('update.password');
+Route::post('/update/photo', [UserController::class, 'update_photo'])->name('update.photo');

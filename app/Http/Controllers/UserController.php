@@ -45,4 +45,16 @@ class UserController extends Controller
             return back()->with('err', 'Current Password Issue');
         }
     }
+
+    function update_photo(Request $request){
+        $request->validate([
+            'photo'=> ['required', 'mimes:png,jpg', 'max:1024'],
+        ]);
+        $photo = $request->photo;
+        $extension = $photo->extension();
+        $file_name = uniqid().'.'.$extension;
+        echo $file_name;
+    
+        
+    }
 }
