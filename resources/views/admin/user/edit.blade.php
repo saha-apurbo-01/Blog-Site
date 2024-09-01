@@ -84,13 +84,17 @@
     </div>
 
     <div class="col-lg-4">
-        <form method="POST" action="{{ route('update.photo') }}" enctype="multipart/form-data">
-            @csrf
-            <div class="card">
+                <div class="card">
                 <div class="card-header bg-primary">
-                    <h3 class="text-white">Change Photo</h3>
+                <h3 class="text-white">Change Photo</h3>
                 </div>
+               
                 <div class="card-body">
+                    @if (session('picUp'))
+                        <div class="alert alert-success">{{ session('picUp') }}</div>
+                    @endif
+                    <form method="POST" action="{{ route('update.photo') }}" enctype="multipart/form-data">
+                        @csrf
                     <div class="mb-3">
                         <label class="form-label">Photo</label>
                         <input type="file" name="photo" class="form-control" onchange="document.getElementById('photo').src = window.URL.createObjectURL(this.files[0])">
@@ -100,14 +104,15 @@
                     <strong class="text-danger">{{ $message }}</strong>                        
                     @enderror
 
-                    <div class="mb-3"><img src="" alt="" id="photo" width="200"></div>
+                    <div class="mb-3"><img src="{{ asset('uploads/users') }}/{{ Auth::user()->photo }}"" alt="" id="photo" width="200"></div>
 
                     <div class="mb-3">
                         <button type="submit" class="btn btn-primary">Update</button>
                     </div>
+                </form>
                 </div>
             </div>
-        </form>
+        
     </div>
 </div>
 

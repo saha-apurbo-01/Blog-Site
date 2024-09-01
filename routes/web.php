@@ -19,6 +19,7 @@ require __DIR__.'/auth.php';
 
 // profile
 
+Route::get('/users', [UserController::class, 'users'])->name('users');
 Route::get('/profile/edit-profile', [UserController::class, 'edit_user'])->name('edit.user');
 Route::post('/update/profile', [UserController::class, 'update_user'])->name('update.user');
 Route::post('/update/password', [UserController::class, 'update_password'])->name('update.password');
