@@ -25,7 +25,7 @@
                         <input type="email" name="email" class="form-control" value="{{Auth::user()->email}}">
                     </div>
                     <div class="mb-3">
-                        <button type="submit" class="btn btn-primary">Update</button>
+                        <button type="submit" class="btn btn-success">Update</button>
                     </div>
                 </form>
             </div>
@@ -75,7 +75,7 @@
 
 
                     <div class="mb-3">
-                        <button type="submit" class="btn btn-primary">Update</button>
+                        <button type="submit" class="btn btn-success">Update</button>
                     </div>
                 </form>
             </div>
@@ -107,7 +107,7 @@
                     <div class="mb-3"><img src="{{ asset('uploads/users') }}/{{ Auth::user()->photo }}"" alt="" id="photo" width="200"></div>
 
                     <div class="mb-3">
-                        <button type="submit" class="btn btn-primary">Update</button>
+                        <button type="submit" class="btn btn-success">Update</button>
                     </div>
                 </form>
                 </div>

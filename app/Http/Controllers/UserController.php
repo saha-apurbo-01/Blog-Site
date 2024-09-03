@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Foundation\Console\StorageUnlinkCommand;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -78,5 +79,26 @@ class UserController extends Controller
         return back()->with('picUp', 'Photo Updated Successfully!');
     
         
+    }
+
+    function delete($user_id){
+        $users= User::find($user_id);
+        if($users->photo != null){
+        $delete_from= public_path('uploads/users/'.$users->photo);
+        unlink($delete_from);
+
+        }
+        User::find($user_id)->delete();
+        return back()->with('delete', 'User deleted successfully!');
+    }
+
+    function add_user(Request $request){
+        User::insert([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'password'=>bcrypt($request->password),
+            'created_at'=>Carbon::now(),
+        ]);
+        return back()->with('add', 'New user added successfully!');
     }
 }
