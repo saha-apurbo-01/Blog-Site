@@ -560,9 +560,11 @@
   <!-- inject:js -->
   <script src="{{asset('admin_asset')}}/vendors/feather-icons/feather.min.js"></script>
   <script src="{{asset('admin_asset')}}/js/template.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <!-- endinject -->
   <!-- custom js for this page -->
   <!-- end custom js for this page -->
+  @yield('footer_script')
 </body>
 
 </html>
