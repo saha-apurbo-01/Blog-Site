@@ -32,3 +32,4 @@ Route::post('/adduser', [UserController::class, 'add_user'])->name('add.user');
 Route::get('/category', [CatagoryController::class, 'category'])->name('category');
 Route::post('/category/store', [CatagoryController::class, 'category_store'])->name('category.store');
 Route::get('/category-delete/{user_id}', [CatagoryController::class, 'category_delete'])->name('category.delete');
+Route::get('/category-trash', [CatagoryController::class, 'category_trash'])->name('category.trash');

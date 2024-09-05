@@ -66,7 +66,7 @@
                   <a href="{{ route('category') }}" class="nav-link">Add Category</a>
                 </li>
                 <li class="nav-item">
-                  <a href="../../pages/ui-components/tooltips.html" class="nav-link">Tooltips</a>
+                  <a href="{{ route('category.trash') }}" class="nav-link">Trashbin</a>
                 </li>
               </ul>
             </div>

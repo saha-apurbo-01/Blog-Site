@@ -47,5 +47,9 @@ class CatagoryController extends Controller
         Category::find($user_id)->delete();
         return back()->with('delete', 'User deleted successfully!');
     }
+
+    function category_trash(){
+        return view('admin.category.trash');
+    }
     }
 

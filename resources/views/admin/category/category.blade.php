@@ -79,8 +79,20 @@
     position: "center",
     icon: "success",
     title: "{{ session('success') }}",
-    showConfirmButton: true,
-    // timer: 1500
+    showConfirmButton: false,
+    timer: 1500
+  });
+</script>
+@endif
+
+@if (session('delete'))
+<script>
+    Swal.fire({
+    position: "center",
+    icon: "success",
+    title: "{{ session('delete') }}",
+    showConfirmButton: false,
+    timer: 1500
   });
 </script>
 @endif
