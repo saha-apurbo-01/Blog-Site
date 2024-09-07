@@ -35,21 +35,16 @@ class CatagoryController extends Controller
         ]);
         return back()->with('success', 'Category added successfully!');
         
-    }
-        
-    function category_delete($user_id){
-        $category= Category::find($user_id);
-        if($category->category_image != null){
-        $delete_from= public_path('uploads/categories/'.$category->category_image);
-        unlink($delete_from);
+    }    
 
-        }
-        Category::find($user_id)->delete();
-        return back()->with('delete', 'User deleted successfully!');
+    function category_delete($category_id){
+        Category::find($category_id)->delete();
+        return back()->with('delete', 'Category deleted successfully!');
     }
 
     function category_trash(){
         return view('admin.category.trash');
     }
+    
     }
 

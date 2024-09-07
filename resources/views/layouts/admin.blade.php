@@ -66,7 +66,7 @@
                   <a href="{{ route('category') }}" class="nav-link">Add Category</a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('category.trash') }}" class="nav-link">Trashbin</a>
+                  <a href="{{ route('category.trash') }}" class="nav-link">Trash Bin</a>
                 </li>
               </ul>
             </div>
