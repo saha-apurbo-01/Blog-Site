@@ -44,4 +44,27 @@ class AuthorController extends Controller
     function author_dashboard(){
         return view('fontend.author.author');
     }
+
+    function authors(){
+        $authors = Author::all();
+        return view('fontend.author.authors', compact('authors'));
+    }
+    function authors_status($author_id){
+        $author = Author::find($author_id);
+        if($author->status == 1){
+            Author::find($author_id)->update([
+                'status'=> 0,
+            ]);
+            return back();
+        }
+        else{
+            Author::find($author_id)->update([
+                'status'=> 1,
+            ]);
+            return back(); 
+        }
+    }
+    function authors_edit(){
+        return view('fontend.author.edit');
+    }
 }

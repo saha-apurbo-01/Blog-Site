@@ -59,3 +59,6 @@ Route::post('/author/register-post', [AuthorController::class, 'author_register'
 Route::post('/author/login-post', [AuthorController::class, 'author_login'])->name('author.login');
 Route::get('/author/logout', [AuthorController::class, 'author_logout'])->name('author.logout');
 Route::get('/author/dashboard', [AuthorController::class, 'author_dashboard'])->middleware('author')->name('author.dashboard');
+Route::get('/authors', [AuthorController::class, 'authors'])->middleware('auth')->name('authors');
+Route::get('/authors/status/{author_id}', [AuthorController::class, 'authors_status'])->middleware('auth')->name('authors.status');
+Route::get('/authors/edit', [AuthorController::class, 'authors_edit'])->middleware('author')->name('authors.edit');

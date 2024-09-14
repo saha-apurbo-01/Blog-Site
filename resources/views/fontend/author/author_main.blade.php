@@ -312,7 +312,7 @@
 								<div class="dropdown-body">
 									<ul class="profile-nav p-0 pt-3">
 										<li class="nav-item">
-											<a href="javascript:;" class="nav-link">
+											<a href="{{route('authors.edit')}}" class="nav-link">
 												<i data-feather="edit"></i>
 												<span>Edit Profile</span>
 											</a>

@@ -12,4 +12,5 @@ class Author extends Authenticatable
 {
     use HasFactory, Notifiable;
     protected $guard = 'author';
+    protected $guarded = ['id'];
 }
