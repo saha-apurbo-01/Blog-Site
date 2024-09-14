@@ -30,7 +30,7 @@ class AuthorController extends Controller
                 }
             }
             else{
-                return back()->with('corect', 'Login attempt incorrect!');
+                return back()->with('correct', 'Login attempt incorrect!');
             }
         }
         else{
