@@ -65,7 +65,7 @@
                   <a href="{{route('add.post')}}" class="nav-link">Add Post</a>
                 </li>
                 <li class="nav-item">
-                  <a href="../../pages/email/read.html" class="nav-link">Read</a>
+                  <a href="{{route('my.post')}}" class="nav-link">My Post</a>
                 </li>
                 <li class="nav-item">
                   <a href="../../pages/email/compose.html" class="nav-link">Compose</a>

@@ -68,3 +68,8 @@ Route::post('/authors/password/update', [AuthorController::class, 'authors_passw
 
 // Posts
 Route::get('/add/post', [PostController::class, 'add_post'])->name('add.post');
+Route::post('/post/store', [PostController::class, 'post_store'])->name('post.store');
+Route::get('/my/post', [PostController::class, 'my_post'])->name('my.post');
+Route::get('/post/delete/{post_id}', [PostController::class, 'post_delete'])->name('post.delete');
+Route::get('/all/post', [UserController::class, 'all_post'])->name('all.post');
+Route::get('/post/active/deactive/{post_id}', [UserController::class, 'post_status'])->name('post.status');

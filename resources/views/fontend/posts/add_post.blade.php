@@ -6,10 +6,10 @@
                 <h3>Create New Post</h3>
             </div>
             <div class="card-body">
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="{{route('post.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                         <div class="mb-3">
                             <label class="form-label">Category</label>
                             <select name="category_id" class="form-control">
@@ -20,7 +20,13 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
+                        <div class="mb-3">
+                            <label class="form-label">Read Time</label>
+                            <input type="text" name="read" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
                         <div class="mb-3">
                             <label class="form-label">Title</label>
                             <input type="text" name="title" class="form-control">
@@ -35,7 +41,7 @@
                     <div class="col-lg-12">
                         <div class="mb-3">
                             <label class="form-label">Select Tag</label>
-                            <select id="select-gear" name="tag_id" class="demo-default" multiple placeholder="Select Tag...">
+                            <select id="select-gear" name="tag_id[]" class="demo-default" multiple placeholder="Select Tag...">
                                 <option value="">Select Tag...</option>
                                     @foreach ($tags as $tag)
                                     <option value="{{$tag->id}}">{{$tag->tag_name}}</option> 
@@ -61,7 +67,7 @@
                     </div>
                     <div class="m-auto">
                         <div class="mt-5">
-                            <button class="btn btn-success form-control">Submit</button>
+                            <button type="submit" class="btn btn-success form-control">Submit</button>
                         </div>
                     </div>
                 </div>

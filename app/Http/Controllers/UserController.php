@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
+use App\Models\Post;
 
 use function Laravel\Prompts\password;
 
@@ -100,5 +101,27 @@ class UserController extends Controller
             'created_at'=>Carbon::now(),
         ]);
         return back()->with('add', 'New user added successfully!');
+    }
+    function all_post(){
+        $posts = Post::all();
+        return view('admin.post.all_post',[
+            'posts'=>$posts,
+        ]);
+    }
+    function post_status($post_id){
+        $posts = Post::find($post_id);
+
+        if($posts->status == 1){
+            Post::find($post_id)->update([
+                'status'=>0,
+            ]);
+            return back();
+        }
+        else{
+            Post::find($post_id)->update([
+                'status'=>1,
+            ]);
+            return back();
+        }
     }
 }
