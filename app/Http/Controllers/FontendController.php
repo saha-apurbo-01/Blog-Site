@@ -12,7 +12,7 @@ class FontendController extends Controller
     function welcome(){
         $categories = Category::all();
         $tags = Tag::all();
-        $posts = Post::where('status', 1)->paginate(3);
+        $posts = Post::where('status', 1)->paginate(2);
         $slider_post = Post::where('status', 1)->latest()->take(3)->get();
         return view('fontend.index', [
             'categories'=> $categories,
