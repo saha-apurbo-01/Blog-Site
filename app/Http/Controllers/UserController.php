@@ -103,7 +103,7 @@ class UserController extends Controller
         return back()->with('add', 'New user added successfully!');
     }
     function all_post(){
-        $posts = Post::all();
+        $posts = Post::latest()->simplePaginate(3);
         return view('admin.post.all_post',[
             'posts'=>$posts,
         ]);

@@ -28,6 +28,9 @@
                         @endforeach
                         
                     </table>
+                    <div class="my-4">
+                        {{$posts->links()}}
+                    </div>
                 </div>
             </div>
         </div>
