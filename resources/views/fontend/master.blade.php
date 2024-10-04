@@ -202,8 +202,8 @@
                             <i class="far fa-times"></i>
                         </button>
                         <form class="search-form" action="https://oredoo.assiagroupe.net/Oredoo/search.html">
-                            <input type="search" value="" placeholder="What are you looking for?">
-                            <button type="submit" class="search-btn"> search</button>
+                            <input type="search" id="search_input" value="" placeholder="What are you looking for?">
+                            <button type="button" class="search-btn"> search</button>
                         </form>
                     </div>
                 </div>
@@ -229,7 +229,14 @@
 
     <!-- JS main  -->
     <script src="{{asset('font_asset')}}/js/main.js"></script>
-
+    @yield('footer_script')
+    <script>
+        $('.search-btn').click(function(){
+            let input = $('#search_input').val();
+            let link = "{{ route('search') }}"+"?keyword="+input;
+            window.location.href = link;
+        })
+    </script>
 
 </body>
 </html>

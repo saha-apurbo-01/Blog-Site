@@ -75,3 +75,7 @@ Route::get('/all/post', [UserController::class, 'all_post'])->name('all.post');
 Route::get('/post/active/deactive/{post_id}', [UserController::class, 'post_status'])->name('post.status');
 Route::get('/post/details/{slug}', [FontendController::class, 'post_details'])->name('post.details');
 Route::get('/author/post/{author_id}', [FontendController::class, 'author_post'])->name('author.post');
+Route::get('category/post/{category_id}', [FontendController::class, 'category_post'])->name('category.post');
+
+// search
+Route::get('/search', [FontendController::class, 'search'])->name('search');

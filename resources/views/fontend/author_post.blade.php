@@ -94,7 +94,7 @@
                         
                         <!--/-->
                         <!--pagination-->
-                        <div class="pagination">
+                        {{-- <div class="pagination">
                             <div class="pagination-area text-left">
                                 <div class="pagination-list">
                                     <ul class="list-inline">
@@ -107,7 +107,8 @@
                                     </ul>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
+                        {{ $posts->links() }}
                     </div>
                 </div>
                 <!--/-->

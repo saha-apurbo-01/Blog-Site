@@ -14,7 +14,7 @@
                                 <div class="post-overly">
                                     <div class="post-overly-content">
                                         <div class="entry-cat">
-                                            <a href="blog-layout-1.html" class="category-style-2">{{$slider->rel_to_category->category_name}}</a>
+                                            <a href="{{ route('category.post', $slider->category_id) }}" class="category-style-2">{{$slider->rel_to_category->category_name}}</a>
                                         </div>
                                         <h2 class="entry-title">
                                             <a href="{{ route('post.details', $slider->slug) }}">{{$slider->title}} </a>
@@ -79,7 +79,7 @@
                             <div class="post-list-content">
                                 <ul class="entry-meta">
                                     <li class="entry-cat">
-                                        <a href="blog-layout-1.html" class="category-style-1">{{$post->rel_to_category->category_name}}</a>
+                                        <a href="{{ route('category.post', $post->category_id) }}" class="category-style-1">{{$post->rel_to_category->category_name}}</a>
                                     </li>
                                     <li class="post-date"> <span class="line"></span> {{$post->created_at->diffForHumans()}}</li>
                                 </ul>
@@ -131,7 +131,7 @@
                                 <div class=" widget-search">
                                     <form action="https://oredoo.assiagroupe.net/Oredoo/search.html">
                                         <input type="search" id="gsearch" name="gsearch" placeholder="Search ....">
-                                        <a href="search.html" class="btn-submit"><i class="las la-search"></i></a>
+                                        <a class="btn-submit"><i class="las la-search"></i></a>
                                     </form>
                                 </div>
                             </div>
@@ -143,75 +143,24 @@
                                 </div>
 
                                 <ul class="widget-popular-posts">
-                                    <!--post1-->
+                                    @foreach ($popular_post as $popular)
+                                       <!--post1-->
                                     <li class="small-post">
                                         <div class="small-post-image">
                                             <a href="post-single.html">
-                                                <img src="{{asset('font_asset')}}/img/blog/1.jpg" alt="">
+                                                <img src="{{ asset('uploads/posts/thumbnail') }}/{{ $popular->rel_to_post->thumbnail }}" alt="">
                                                 <small class="nb">1</small>
                                             </a>
                                         </div>
                                         <div class="small-post-content">
                                             <p>
-                                                <a href="post-single.html">Everything is designed. Few things are
-                                                    designed well.</a>
+                                                <a href="post-single.html">{{ $popular->rel_to_post->title }}</a>
                                             </p>
-                                            <small> <span class="slash"></span>3 mounth ago</small>
+                                            <small> <span class="slash"></span>{{ $popular->rel_to_post->created_at->diffForHumans() }}</small>
                                         </div>
-                                    </li>
-
-                                    <!--post2-->
-                                    <li class="small-post">
-                                        <div class="small-post-image">
-                                            <a href="post-single.html">
-                                                <img src="{{asset('font_asset')}}/img/blog/5.jpg" alt="">
-                                                <small class="nb">2</small>
-                                            </a>
-                                        </div>
-                                        <div class="small-post-content">
-                                            <p>
-                                                <a href="post-single.html">Brand yourself for the career you want, not
-                                                    the job you </a>
-                                            </p>
-                                            <small> <span class="slash"></span> 3 mounth ago</small>
-                                        </div>
-                                    </li>
-
-                                    <!--post3-->
-                                    <li class="small-post">
-                                        <div class="small-post-image">
-                                            <a href="post-single.html">
-                                                <img src="{{asset('font_asset')}}/img/blog/13.jpg" alt="">
-                                                <small class="nb">3</small>
-
-                                            </a>
-                                        </div>
-                                        <div class="small-post-content">
-                                            <p>
-                                                <a href="post-single.html">It’s easier to ask forgiveness than it is to
-                                                    get permission.</a>
-                                            </p>
-                                            <small> <span class="slash"></span>3 mounth ago</small>
-                                        </div>
-                                    </li>
-
-                                    <!--post4-->
-                                    <li class="small-post">
-                                        <div class="small-post-image">
-                                            <a href="post-single.html">
-                                                <img src="{{asset('font_asset')}}/img/blog/16.jpg" alt="">
-                                                <small class="nb">4</small>
-                                            </a>
-                                        </div>
-                                        <div class="small-post-content">
-                                            <p>
-                                                <a href="post-single.html">All happiness depends on a leisurely
-                                                    breakfast</a>
-                                            </p>
-                                            <small> <span class="slash"></span>
-                                                3 mounth ago</small>
-                                        </div>
-                                    </li>
+                                    </li> 
+                                    @endforeach
+                                    
                                 </ul>
                             </div>
 
@@ -286,6 +235,16 @@
     </section>
 
 
+@endsection
+
+@section('footer_script')
+<script>
+    $('.btn-submit').click(function(){
+        let input = $('#gsearch').val();
+        let link = "{{ route('search') }}"+"?keyword="+input;
+        window.location.href = link;
+    })
+</script>
 @endsection
 
 

@@ -23,7 +23,7 @@
                                 @endif
 
                                 <li class="post-author"> <a href="{{ route('author.post', $post->author_id) }}">{{ $post->rel_to_author->name }}</a></li>
-                                <li class="entry-cat"> <a href="blog-layout-1.html" class="category-style-1 "> <span class="line"></span> {{ $post->rel_to_category->category_name }}</a></li>
+                                <li class="entry-cat"> <a href="{{ route('category.post', $post->category_id) }}" class="category-style-1 "> <span class="line"></span> {{ $post->rel_to_category->category_name }}</a></li>
                                 <li class="post-date"> <span class="line"></span>{{ $post->created_at->diffForHumans() }}</li>
                             </ul>
                             
@@ -44,7 +44,7 @@
                                 <ul class="list-inline">
                                     @foreach ($after_explode as $tag_id)
                                     <li >
-                                        <a href="blog-layout-2.html">{{ App\Models\Tag::where('id', $tag_id)->first()->tag_name }}</a>
+                                        <a href="{{ route('category.post', $post->category_id) }}">{{ App\Models\Tag::where('id', $tag_id)->first()->tag_name }}</a>
                                     </li>  
                                     @endforeach
                                    
