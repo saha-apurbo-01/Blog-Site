@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -22,7 +23,7 @@ class PostController extends Controller
         ]);
     }
     function post_store(Request $request){
-
+        
         $thumbnail = $request->thumbnail;
         $extension = $thumbnail->extension();
         $thumbnail_name = uniqid().'.'.$extension;
@@ -45,6 +46,7 @@ class PostController extends Controller
             'category_id'=>$request->category_id,
             'read_time'=>$request->read,
             'title'=>$request->title,
+            'slug'=>str::lower(str_replace(' ', '-', $request->title)).'-'.random_int(10000, 30000),
             'desp'=>$request->desp,
             'tags'=>implode(',', $request->tag_id),
             'thumbnail'=>$thumbnail_name, 

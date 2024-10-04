@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('category_id');
             $table->integer('read_time');
             $table->string('title');
+            $table->string('slug');
             $table->longText('desp');
             $table->string('tags');
             $table->string('thumbnail');

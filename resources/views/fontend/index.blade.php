@@ -17,7 +17,7 @@
                                             <a href="blog-layout-1.html" class="category-style-2">{{$slider->rel_to_category->category_name}}</a>
                                         </div>
                                         <h2 class="entry-title">
-                                            <a href="post-single.html">{{$slider->title}} </a>
+                                            <a href="{{ route('post.details', $slider->slug) }}">{{$slider->title}} </a>
                                         </h2>
                                         <ul class="entry-meta">
                                             <li class="post-author"> <a href="author.html">{{$slider->rel_to_author->name}}</a></li>
@@ -72,7 +72,7 @@
                             <!--post1-->
                         <div class="post-list post-list-style4">
                             <div class="post-list-image">
-                                <a href="post-single.html">
+                                <a href="{{ route('post.details', $post->slug) }}">
                                     <img src="{{asset('uploads/posts/thumbnail')}}/{{$post->thumbnail}}" alt="">
                                 </a>
                             </div>
@@ -84,11 +84,11 @@
                                     <li class="post-date"> <span class="line"></span> {{$post->created_at->diffForHumans()}}</li>
                                 </ul>
                                 <h5 class="entry-title">
-                                    <a href="post-single.html">{{$post->title}}</a>
+                                    <a href={{ route('post.details', $post->slug) }}>{{$post->title}}</a>
                                 </h5>
 
                                 <div class="post-btn">
-                                    <a href="post-single.html" class="btn-read-more">Continue Reading <i
+                                    <a href="{{ route('post.details', $post->slug) }}" class="btn-read-more">Continue Reading <i
                                             class="las la-long-arrow-alt-right"></i></a>
                                 </div>
                             </div>
