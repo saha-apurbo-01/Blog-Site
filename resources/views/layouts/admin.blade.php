@@ -60,6 +60,15 @@
               
             </a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('role.manager') }}">
+              <i class="link-icon" data-feather="users"></i>
+              <span class="link-title">Role Manager</span>
+              
+            </a>
+          </li>
+          
           <li class="nav-item nav-category">Components</li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#uiComponents" role="button" aria-expanded="false" aria-controls="uiComponents">

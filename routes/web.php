@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CatagoryController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
@@ -86,3 +87,6 @@ Route::get('/subscribe', [FontendController::class, 'subscribe'])->name('subscri
 
 // comments
 Route::post('/comment/store/{author_id}', [FontendController::class, 'comment_store'])->name('comment.store');
+
+// Roles
+Route::get('/role/manager', [RoleController::class, 'role_manager'])->name('role.manager');
