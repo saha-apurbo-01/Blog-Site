@@ -141,10 +141,10 @@
                                     <p>Sign up for free and be the first to get notified about new posts.</p>
                                 </div>
 
-                                <form action="#" class="newslettre-form">
+                                <form action="{{ route('subscribe') }}" class="newslettre-form">
                                     <div class="form-flex">
                                         <div class="form-group">
-                                            <input type="email" class="form-control" placeholder="Your Email Adress"
+                                            <input type="email" name="email" class="form-control" placeholder="Your Email Adress"
                                                 required="required">
                                         </div>
                                         <button class="submit-btn" type="submit">

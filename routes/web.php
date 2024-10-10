@@ -76,6 +76,13 @@ Route::get('/post/active/deactive/{post_id}', [UserController::class, 'post_stat
 Route::get('/post/details/{slug}', [FontendController::class, 'post_details'])->name('post.details');
 Route::get('/author/post/{author_id}', [FontendController::class, 'author_post'])->name('author.post');
 Route::get('category/post/{category_id}', [FontendController::class, 'category_post'])->name('category.post');
+Route::get('tag/post/{tag_id}', [FontendController::class, 'tag_post'])->name('tag.post');
 
 // search
 Route::get('/search', [FontendController::class, 'search'])->name('search');
+
+// subscribers
+Route::get('/subscribe', [FontendController::class, 'subscribe'])->name('subscribe');
+
+// comments
+Route::post('/comment/store/{author_id}', [FontendController::class, 'comment_store'])->name('comment.store');

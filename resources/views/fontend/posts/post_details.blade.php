@@ -137,80 +137,67 @@
                         <!--post-single-comments-->
                         <div class="post-single-comments">
                             <!--Comments-->
-                            <h4 >3 Comments</h4>
+                            <h4 >{{ $total_comments }} Comments</h4>
                             <ul class="comments">
+                                @foreach ($comments as $comment)
+                            
                                 <!--comment1-->
-                                <li class="comment-item pt-0">
-                                    <img src="assets/img/other/user1.jpg" alt="">
+                                <li class="comment-item pt-0 pb-10">
+                                    <img src="{{ asset('font_asset') }}/img/other/user1.jpg" alt="">
                                     <div class="content">
                                         <div class="meta">
                                             <ul class="list-inline">
-                                                <li><a href="#">Nirmaine Nicole</a> </li>
+                                                <li><a href="#">{{ $comment->rel_to_author->name }}</a> </li>
                                                 <li class="slash"></li>
-                                                <li>3 Months Ago</li>
+                                                <li>{{ $comment->created_at->diffForHumans() }}</li>
                                             </ul>
                                         </div>
-                                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus at doloremque adipisci eum placeat
-                                            quod non fugiat aliquid sit similique!
-                                        </p>
-                                        <a href="#" class="btn-reply"><i class="las la-reply"></i> Reply</a>
+                                        <p>{{ $comment->message }}</p>
+                                        <a href="#reply" data-id="{{ $comment->id }}" class="btn-reply"><i class="las la-reply"></i> Reply</a>
                                     </div>
                             
                                 </li>
-                                <!--comment2-->
-                                <li class="comment-item">
-                                    <img src="assets/img/other/use2.jpg" alt="">
+ 
+                                @foreach ($comment->replies as $reply)
+                                     <!--reply1-->
+                                <li class="comment-item pt-0d border-bottom-0" style="margin-left: 100px">
+                                    <img src="{{ asset('font_asset') }}/img/other/user1.jpg" alt="">
                                     <div class="content">
                                         <div class="meta">
                                             <ul class="list-inline">
-                                                <li><a href="#">adam smith</a> </li>
+                                                <li><a href="#">{{ $reply->rel_to_author->name }}</a> </li>
                                                 <li class="slash"></li>
-                                                <li>3 Months Ago</li>
+                                                <li>{{ $reply->created_at->diffForHumans() }}</li>
                                             </ul>
                                         </div>
-                                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus at doloremque adipisci eum placeat
-                                            quod non fugiat aliquid sit similique!
-                                        </p>
-                                        <a href="#" class="btn-reply"><i class="las la-reply"></i> Reply</a>
+                                        <p>{{ $reply->message }}</p>
+                                        <a href="#reply" data-id="{{ $comment->id }}" class="btn-reply"><i class="las la-reply"></i> Reply</a>
                                     </div>
+                            
                                 </li>
-                                   <!--comment3-->
-                                <li class="comment-item">
-                                    <img src="assets/img/other/user3.jpg" alt="">
-                                    <div class="content">
-                                        <div class="meta">
-                                            <ul class="list-inline">
-                                                <li><a href="#">Emma david</a> </li>
-                                                <li class="slash"></li>
-                                                <li>3 Months Ago</li>
-                                            </ul>
-                                        </div>
-                                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus at doloremque adipisci eum placeat
-                                            quod non fugiat aliquid sit similique!
-                                        </p>
-                                        <a href="#" class="btn-reply"><i class="las la-reply"></i> Reply</a>
-                                    </div>
-                                </li>
+                                @endforeach
+                                @endforeach
                             
                             </ul>
-                            <!--Leave-comments-->
-                            <div class="comments-form">
+                            @auth('author')
+                               <!--Leave-comments-->
+                            <div class="comments-form" id="reply">
                                 <h4 >Leave a Reply</h4>
                                 <!--form-->
-                                <form class="form " action="#" method="POST" id="main_contact_form">
+                                <form class="form " action="{{ route('comment.store', Auth::guard('author')->id()) }}" method="POST" id="main_contact_form">
+                                    @csrf
                                     <p>Your email adress will not be published ,Requied fileds are marked*.</p>
-                                    <div class="alert alert-success contact_msg" style="display: none" role="alert">
-                                        Your message was sent successfully.
-                                    </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <input type="text" name="name" id="name" class="form-control" placeholder="Name*" required="required">
+                                                <input type="hidden" name="parent_id" id="parent_id">
+                                                <input type="hidden" name="post_id" value="{{ $post->id }}">
+                                                <input type="text" name="name" id="name" class="form-control" placeholder="Name*" required="required" value="{{ Auth::guard('author')->user()->name }}">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <input type="email" name="email" id="email" class="form-control" placeholder="Email*" required="required">
+                                                <input type="email" name="email" id="email" class="form-control" placeholder="Email*" required="required" value="{{ Auth::guard('author')->user()->email }}">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
@@ -220,11 +207,6 @@
                                         </div>
                                     
                                         <div class="col-lg-12">
-                                            <div class="mb-20">
-                                                <input name="name" type="checkbox" value="1" required="required">
-                                                <label for="name"><span>save my name , email and website in this browser for the next time I comment.</span></label>
-                                            </div>
-                                        
                                             <button type="submit" name="submit" class="btn-custom">
                                                 Send Comment
                                             </button>
@@ -232,11 +214,22 @@
                                     </div>
                                 </form>
                                 <!--/-->
-                            </div>
+                            </div>  
+                            @endauth
+                           
                         </div>
                     </div>
-            </div>
+                </div>
         </div>
     </div>
 </section>  
+@endsection
+
+@section('footer_script')
+    <script>
+     $('.btn-reply').click(function (){
+        let parent_id = $(this).attr('data-id');
+        $('#parent_id').attr('value', parent_id);
+     })
+    </script>
 @endsection

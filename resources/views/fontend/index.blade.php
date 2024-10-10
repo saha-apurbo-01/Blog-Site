@@ -168,10 +168,10 @@
                             <div class="widget widget-newsletter">
                                 <h5>Subscribe To Our Newsletter</h5>
                                 <p>No spam, notifications only about new products, updates.</p>
-                                <form action="#" class="newslettre-form">
+                                <form action="{{ route('subscribe') }}" class="newslettre-form">
                                     <div class="form-flex">
                                         <div class="form-group">
-                                            <input type="email" class="form-control" placeholder="Your Email Adress"
+                                            <input type="email" name="email" class="form-control" placeholder="Your Email Adress"
                                                 required="required">
                                         </div>
                                         <button class="btn-custom" type="submit">Subscribe now</button>
@@ -220,7 +220,7 @@
                                     <ul class="list-inline">
                                         @foreach ($tags as $tag)
                                         <li>
-                                            <a href="#">{{$tag->tag_name}}</a>
+                                            <a href="{{ route('tag.post', $tag->id) }}">{{$tag->tag_name}}</a>
                                         </li>
                                         @endforeach
                                     </ul>
