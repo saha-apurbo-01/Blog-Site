@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CatagoryController;
+use App\Http\Controllers\PassResController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TagController;
@@ -90,3 +91,9 @@ Route::post('/comment/store/{author_id}', [FontendController::class, 'comment_st
 
 // Roles
 Route::get('/role/manager', [RoleController::class, 'role_manager'])->name('role.manager');
+Route::post('/permission/store', [RoleController::class, 'permission_store'])->name('permission.store');
+Route::post('/role/store', [RoleController::class, 'role_store'])->name('role.store');
+
+// Password Reset
+Route::get('/pass/res/req', [PassResController::class, 'pass_res_req'])->name('pass.res.req');
+Route::post('/pass/res/req/post', [PassResController::class, 'pass_res_req_post'])->name('pass.res.req.post');

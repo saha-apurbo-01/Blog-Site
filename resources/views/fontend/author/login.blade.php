@@ -28,7 +28,7 @@
                                 <input type="password" class="form-control" placeholder="Password*" name="password" value="">
                             </div>
                             <div class="sign-controls form-group">
-                                <a href="#" class="btn-link ">Forgot Password?</a>
+                                <a href="{{ route('pass.res.req') }}" class="btn-link ">Forgot Password?</a>
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn-custom">Log in</button>

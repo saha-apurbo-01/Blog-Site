@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('subscribers', function (Blueprint $table) {
+        Schema::create('pass_resets', function (Blueprint $table) {
             $table->id();
-            $table->string('subscribe');
+            $table->integer('author_id');
+            $table->string('token');
             $table->timestamps();
         });
     }
@@ -23,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('subscribers');
+        Schema::dropIfExists('pass_resets');
     }
 };
