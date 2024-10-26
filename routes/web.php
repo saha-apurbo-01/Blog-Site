@@ -93,6 +93,7 @@ Route::post('/comment/store/{author_id}', [FontendController::class, 'comment_st
 Route::get('/role/manager', [RoleController::class, 'role_manager'])->name('role.manager');
 Route::post('/permission/store', [RoleController::class, 'permission_store'])->name('permission.store');
 Route::post('/role/store', [RoleController::class, 'role_store'])->name('role.store');
+Route::post('/role/assign', [RoleController::class, 'role_assign'])->name('role.assign');
 
 // Password Reset
 Route::get('/pass/res/req', [PassResController::class, 'pass_res_req'])->name('pass.res.req');
