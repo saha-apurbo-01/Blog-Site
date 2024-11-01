@@ -35,13 +35,21 @@
                             @endif
                             </td>
                             <td>{{ $users->created_at->diffForHumans() }}</td>
-                            <td><a href="{{ route('delete', $users->id) }}" title="Delete User" class="btn btn-danger">Delete</a></td>
+                            
+                            @can('user_del')
+                            <td>
+                                <a href="{{ route('delete', $users->id) }}" title="Delete User" class="btn btn-danger">Delete</a>
+                            </td>
+                            @endcan
+
                         @endforeach
                     </tr>
                 </table>
             </div>
         </div>
     </div>
+    
+    @can('add_user')
     <div class="col-lg-4">
         <div class="card">
             <div class="card-header">
@@ -74,6 +82,8 @@
             </div>
         </div>
     </div>
+    @endcan
+
 </div>
     
 @endsection

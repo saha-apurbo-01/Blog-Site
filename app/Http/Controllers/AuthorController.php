@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\AuthorMailVerify;
 use Carbon\Carbon;
 use App\Models\Author;
 use Illuminate\Http\Request;
@@ -11,6 +12,8 @@ use Intervention\Image\Drivers\Gd\Driver;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\Mail;
+
 
 
 class AuthorController extends Controller
@@ -22,7 +25,10 @@ class AuthorController extends Controller
             'password'=>bcrypt($request->password),
             'created_at'=>Carbon::now(),
         ]);
-        return back()->with('reg_success', 'Registration Success!');
+
+        Mail::to($request->email)->send(new AuthorMailVerify());
+
+        return back()->with('reg_success', 'Registration Success! We have sent you a verification mail');
     }
     function author_login(Request $request){
         if(Author::where('email', $request->email)->exists()){

@@ -1,5 +1,7 @@
 @extends('layouts.admin')
 @section('content')
+
+    @can('post')
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -35,4 +37,6 @@
             </div>
         </div>
     </div>
+    @endcan
+
 @endsection

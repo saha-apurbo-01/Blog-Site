@@ -1,5 +1,7 @@
 @extends('layouts.admin')
 @section('content')
+
+   @can('trash_category')
    <div class="col-lg-8 m-auto">
     <div class="card">
         <div class="card-header bg-primary">
@@ -50,6 +52,8 @@
         </div>
     </div>
    </div>
+   @endcan
+
 @endsection
 
 @section('footer_script')

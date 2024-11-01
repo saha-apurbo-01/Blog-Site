@@ -2,6 +2,8 @@
 
 @section('content')
     <div class="row">
+        
+        @can('category')
         <div class="col-lg-8">
             <div class="card">
                 <div class="card-header ">
@@ -52,8 +54,10 @@
                 </div>
             </div>
         </div>
+        @endcan
+
+        @can('category_add')
         <div class="col-lg-4">
-            
         <div class="card">
             <div class="card-header bg-primary">
                 <h3>Add Category</h3>
@@ -89,7 +93,9 @@
                 </form>
             </div>
         </div>
-        </div>
+         </div>
+         @endcan
+
     </div>
 @endsection
 

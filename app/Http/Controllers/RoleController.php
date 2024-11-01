@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\DB;
 
 class RoleController extends Controller
 {
@@ -35,4 +36,5 @@ class RoleController extends Controller
 
       return back();
    }
+  
 }

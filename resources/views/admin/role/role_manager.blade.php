@@ -24,7 +24,9 @@
                                     <span class="badge badge-primary my-1">{{ $permission }}</span>
                                 @endforeach
                             </td>
-                            <td><a href="" class="btn btn-danger">Delete</a></td>
+                            <td>
+                                <a href="" class="btn btn-danger">Delete</a>
+                            </td>
                         </tr>
                         @endforeach
                     </table>

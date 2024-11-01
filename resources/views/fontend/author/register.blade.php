@@ -10,8 +10,8 @@
                         <h4>Sign up</h4>
                         <!--form--> 
                         @if (session('reg_success'))
-                            <div class="alert alert-success">{{session('reg_success')}}</div>
-                        @endif         
+                        <strong class="text-danger">{{session('reg_success')}}</strong>
+                        @endif        
                         <form  class="sign-form widget-form contact_form " method="POST" action="{{route('author.register')}}">
                             @csrf
                             <div class="form-group">

@@ -2,6 +2,8 @@
 
 @section('content')
     <div class="row">
+
+        @can('tag')
         <div class="col-lg-8">
             <div class="card">
                 <div class="card-header">
@@ -25,6 +27,9 @@
                 </div>
             </div>
         </div>
+        @endcan
+
+        @can('tag_add')
         <div class="col-lg-4">
             <div class="card-header bg-primary">
                 <h3>Add Tag</h3>
@@ -42,6 +47,8 @@
                 </form>
             </div>
         </div>
+        @endcan
+
     </div>
 @endsection
 
