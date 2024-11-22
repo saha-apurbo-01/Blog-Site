@@ -99,3 +99,5 @@ Route::post('/role/assign', [RoleController::class, 'role_assign'])->name('role.
 // Password Reset
 Route::get('/pass/res/req', [PassResController::class, 'pass_res_req'])->name('pass.res.req');
 Route::post('/pass/res/req/post', [PassResController::class, 'pass_res_req_post'])->name('pass.res.req.post');
+Route::get('/pass/res/form/{token}', [PassResController::class, 'pass_res_form'])->name('pass.res.form');
+Route::post('/pass/res/update/{token}', [PassResController::class, 'pass_res_update'])->name('pass.res.update');
