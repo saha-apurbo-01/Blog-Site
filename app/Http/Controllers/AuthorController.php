@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\AuthorMailVerify;
 use Carbon\Carbon;
 use App\Models\Author;
+use App\Models\EmailVerify;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\ImageManager;
@@ -19,14 +20,19 @@ use Illuminate\Support\Facades\Mail;
 class AuthorController extends Controller
 {
     function author_register(Request $request){
-        Author::insert([
+        $author_id= Author::insertGetId([
             'name'=>$request->name,
             'email'=>$request->email,
             'password'=>bcrypt($request->password),
             'created_at'=>Carbon::now(),
         ]);
 
-        Mail::to($request->email)->send(new AuthorMailVerify());
+        $author= EmailVerify::create([
+            'author_id'=> $author_id,
+            'token'=> uniqid(),
+        ]);
+
+        Mail::to($request->email)->send(new AuthorMailVerify($author));
 
         return back()->with('reg_success', 'Registration Success! We have sent you a verification mail');
     }
@@ -126,4 +132,19 @@ class AuthorController extends Controller
             return back()->with('err', 'Current Password Issue');
         }
     }
+    function authors_mail_verify($token){
+        if(EmailVerify::where('token', $token)->exists()){
+            $author = EmailVerify::where('token', $token)->first();
+        Author::find($author->author_id)->update([
+            'email_verified_at'=>Carbon::now(),
+        ]);
+
+        EmailVerify::where('token', $token)->delete();
+
+        return redirect()->route('author.login.page');
+        } else{
+            abort('404');
+        }
+        
+    } 
 }

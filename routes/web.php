@@ -67,6 +67,7 @@ Route::get('/authors/status/{author_id}', [AuthorController::class, 'authors_sta
 Route::get('/authors/edit', [AuthorController::class, 'authors_edit'])->middleware('author')->name('authors.edit');
 Route::post('/authors/update', [AuthorController::class, 'authors_update'])->middleware('author')->name('authors.update');
 Route::post('/authors/password/update', [AuthorController::class, 'authors_password_update'])->middleware('author')->name('authors.password.update');
+Route::get('/authors/mail/verify/{token}', [AuthorController::class, 'authors_mail_verify'])->name('authors.mail.verify');
 
 // Posts
 Route::get('/add/post', [PostController::class, 'add_post'])->name('add.post');
