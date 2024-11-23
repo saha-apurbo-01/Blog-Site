@@ -16,14 +16,16 @@ class PassResController extends Controller
         $author_info = Author::where('email', $request->email)->first();
         if(Author::where('email', $request->email)->exists()){
            if(PassReset::where('author_id', $author_info->id)->exists()){
-            PassReset::where('author_id', $author_info->id)->delete();
+            PassReset::where('author_id', $author_info->id)->delete();   
            }
            $author = PassReset::create([
             'author_id'=> $author_info->id,
             'token'=> uniqid(),
         ]);
             Notification::send($author_info, new InvoicePaid($author));
+            return back();
         }
+        
         else{
             return back()->with('exist', 'Email does not exist');
         }

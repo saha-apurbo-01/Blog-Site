@@ -127,5 +127,11 @@ class FontendController extends Controller
         ]);
         return back();
      }
+     function author_list(){
+        $authors = Author::where('status', 1)->paginate(3);
+        return view('fontend.author_list', [
+            'authors'=> $authors,
+        ]);
+     }
        
 }

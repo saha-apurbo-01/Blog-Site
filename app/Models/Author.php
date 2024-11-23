@@ -13,4 +13,8 @@ class Author extends Authenticatable
     use HasFactory, Notifiable;
     protected $guard = 'author';
     protected $guarded = ['id'];
+
+    function rel_to_post(){
+        return $this->hasMany(Post::class, 'author_id');
+    }
 }

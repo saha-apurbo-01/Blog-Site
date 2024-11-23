@@ -13,10 +13,11 @@ use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
 // author
-Route::get('/', [FontendController::class, 'welcome']);
+Route::get('/', [FontendController::class, 'welcome'])->name('index');
 Route::get('/author/login-page', [FontendController::class, 'author_login_page'])->name('author.login.page');
 Route::get('/author/register-page', [FontendController::class, 'author_register_page'])->name('author.register.page');
 Route::get('/dashboard', [HomeController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/author/list', [FontendController::class, 'author_list'])->name('author.list');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
