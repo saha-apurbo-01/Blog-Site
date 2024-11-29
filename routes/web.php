@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CatagoryController;
+use App\Http\Controllers\FaqController;
 use App\Http\Controllers\PassResController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RoleController;
@@ -102,3 +103,6 @@ Route::get('/pass/res/req', [PassResController::class, 'pass_res_req'])->name('p
 Route::post('/pass/res/req/post', [PassResController::class, 'pass_res_req_post'])->name('pass.res.req.post');
 Route::get('/pass/res/form/{token}', [PassResController::class, 'pass_res_form'])->name('pass.res.form');
 Route::post('/pass/res/update/{token}', [PassResController::class, 'pass_res_update'])->name('pass.res.update');
+
+//Faq
+Route::resource('faq', FaqController::class);

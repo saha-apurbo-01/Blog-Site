@@ -117,10 +117,10 @@
             <div class="collapse" id="charts">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="../../pages/charts/apex.html" class="nav-link">FAQ List</a>
+                  <a href="{{route('faq.index')}}" class="nav-link">FAQ List</a>
                 </li>
                 <li class="nav-item">
-                  <a href="../../pages/charts/chartjs.html" class="nav-link">Add FAQ</a>
+                  <a href="{{route('faq.create')}}" class="nav-link">Add FAQ</a>
                 </li>
               </ul>
             </div>
